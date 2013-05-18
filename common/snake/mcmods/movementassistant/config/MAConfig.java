@@ -18,12 +18,12 @@ public class MAConfig extends Configuration
         super(file);
         
         Property versionProp = getVersionProp();
-        if(versionProp.getString()=="")
+        if(versionProp.value=="")
         {
             firstGen();
             save();
         }
-        else if(versionProp.getString() != GlobalConsts.VERSION)
+        else if(versionProp.value != GlobalConsts.VERSION)
         {
             generateConfiguration();
             save();
@@ -37,12 +37,12 @@ public class MAConfig extends Configuration
     
     public String getVersion()
     {
-        return getVersionProp().getString();
+        return getVersionProp().value;
     }
     
     public void setVersion(String value)
     {
-        getVersionProp().set(value);
+        getVersionProp().value = value;
     }
     
     public Property getFollowAnyProp()
@@ -57,7 +57,7 @@ public class MAConfig extends Configuration
     
     public void setFollowAny(boolean value)
     {
-        getFollowAnyProp().set(value);
+        getFollowAnyProp().value = String.valueOf(value);
     }
     
     protected void firstGen()

@@ -1,14 +1,13 @@
 package snake.mcmods.movementassistant.handlers;
 
-import snake.mcmods.movementassistant.MovementAssistant;
-import snake.mcmods.movementassistant.config.Lang;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.ForgeHooks;
+import snake.mcmods.movementassistant.MovementAssistant;
+import snake.mcmods.movementassistant.config.Lang;
 
 public class MAAutoFollowHandler
 {

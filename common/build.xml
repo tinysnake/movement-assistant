@@ -12,10 +12,10 @@
 	<property file="build.properties" />
 	<property file="build_num.properties" />
 	<target name="clean">
-		<delete file="${build.dir}\mcp\src\minecraft\mcmod.info" />
-		<delete dir="${build.dir}\mcp\src\minecraft\snake" />
-		<delete dir="${build.dir}\mcp\reobf\minecraft" />
-		<delete dir="${build.dir}\mcp\bin\minecraft\snake" />
+		<delete file="${forge.dir}\mcp\src\minecraft\mcmod.info" />
+		<delete dir="${forge.dir}\mcp\src\minecraft\snake" />
+		<delete dir="${forge.dir}\mcp\reobf\minecraft" />
+		<delete dir="${forge.dir}\mcp\bin\minecraft\snake" />
 	</target>
 
 	<target name="increment_build_number">
@@ -25,25 +25,25 @@
 	</target>
 
 	<target name="prep">
-		<copy todir="${build.dir}\mcp\src\minecraft">
+		<copy todir="${forge.dir}\mcp\src\minecraft">
 			<fileset dir="${build.basedir}\common" />
 		</copy>
 	</target>
 
 	<target name="replace_tokens">
-		<replace dir="${build.dir}\mcp\src\minecraft" token="@VERSION@" value="${build.version}" />
-		<replace dir="${build.dir}\mcp\src\minecraft" token="@BUILD_NUM@" value="${build_num}" />
+		<replace dir="${forge.dir}\mcp\src\minecraft" token="@VERSION@" value="${build.version}" />
+		<replace dir="${forge.dir}\mcp\src\minecraft" token="@BUILD_NUM@" value="${build_num}" />
 	</target>
 
 	<target name="recompile">
-		<exec dir="${build.dir}\mcp" executable="cmd" osfamily="windows">
+		<exec dir="${forge.dir}\mcp" executable="cmd" osfamily="windows">
 			<arg line="/c recompile.bat" />
 		</exec>
 	</target>
 
 	<target name="reobfuscate">
-		<exec dir="${build.dir}\mcp" executable="cmd" osfamily="windows">
-			<arg line="/c reobfuscate_srg.bat" />
+		<exec dir="${forge.dir}\mcp" executable="cmd" osfamily="windows">
+			<arg line="/c reobfuscate.bat" />
 		</exec>
 	</target>
 
@@ -55,9 +55,9 @@
 		<antcall target="recompile" />
 		<antcall target="reobfuscate" />
 
-		<jar destfile="${build.release.dir}/[${mc.version}]movement-assistant-${build.version}${build_num}.jar">
-			<fileset dir="${build.dir}\mcp\src\minecraft\" includes="mcmod.info" />
-			<fileset dir="${build.dir}\mcp\reobf\minecraft" />
+		<jar destfile="${build.release.dir}/[${mc.version}]movement-assistant-${build.version}.${build_num}.jar">
+			<fileset dir="${forge.dir}\mcp\src\minecraft\" includes="mcmod.info" />
+			<fileset dir="${forge.dir}\mcp\reobf\minecraft" />
 			<fileset dir="${build.basedir}\resource" />
 		</jar>
 
