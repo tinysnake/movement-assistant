@@ -1,0 +1,2 @@
+msg.follow=Following: 
+msg.unfollow=Stop following: 

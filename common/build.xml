@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     2013-5-16 11:30:42                                                        
+
+     MovementAssistant
+                   
+     tinysnake
+     
+     Took example by parhimar's ee3 proj: https://github.com/pahimar/Equivalent-Exchange-3                                                               
+     ====================================================================== -->
+<project name="MovementAssistant" default="build">
+	<property file="build.properties" />
+	<property file="build_num.properties" />
+	<target name="clean">
+		<delete file="${build.dir}\mcp\src\minecraft\mcmod.info" />
+		<delete dir="${build.dir}\mcp\src\minecraft\snake" />
+		<delete dir="${build.dir}\mcp\reobf\minecraft" />
+		<delete dir="${build.dir}\mcp\bin\minecraft\snake" />
+	</target>
+
+	<target name="increment_build_number">
+		<propertyfile file="build_num.properties">
+			<entry key="build_num" type="int" operation="+" default="1" />
+		</propertyfile>
+	</target>
+
+	<target name="prep">
+		<copy todir="${build.dir}\mcp\src\minecraft">
+			<fileset dir="${build.basedir}\common" />
+		</copy>
+	</target>
+
+	<target name="replace_tokens">
+		<replace dir="${build.dir}\mcp\src\minecraft" token="@VERSION@" value="${build.version}" />
+		<replace dir="${build.dir}\mcp\src\minecraft" token="@BUILD_NUM@" value="${build_num}" />
+	</target>
+
+	<target name="recompile">
+		<exec dir="${build.dir}\mcp" executable="cmd" osfamily="windows">
+			<arg line="/c recompile.bat" />
+		</exec>
+	</target>
+
+	<target name="reobfuscate">
+		<exec dir="${build.dir}\mcp" executable="cmd" osfamily="windows">
+			<arg line="/c reobfuscate_srg.bat" />
+		</exec>
+	</target>
+
+	<target name="build">
+		<antcall target="clean" />
+		<antcall target="increment_build_number" />
+		<antcall target="prep" />
+		<antcall target="replace_tokens" />
+		<antcall target="recompile" />
+		<antcall target="reobfuscate" />
+
+		<jar destfile="${build.release.dir}/[${mc.version}]movement-assistant-${build.version}${build_num}.jar">
+			<fileset dir="${build.dir}\mcp\src\minecraft\" includes="mcmod.info" />
+			<fileset dir="${build.dir}\mcp\reobf\minecraft" />
+			<fileset dir="${build.basedir}\resource" />
+		</jar>
+
+		<antcall target="clean" />
+	</target>
+</project>

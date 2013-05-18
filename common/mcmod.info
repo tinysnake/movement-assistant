@@ -1,0 +1,21 @@
+[
+{
+  "modid": "MovementAssistant",
+  "name": "Movement Assistant",
+  "description": "It helps you to free your hands while you're walking, swimming or climbing ladder, and auto follow any player!",
+  "version": "@VERSION@@BUILD_NUM@",
+  "mcversion": "1.5.2",
+  "url": "",
+  "updateUrl": "",
+  "authors": [
+    "tinysnake"
+  ],
+  "credits": "By tinysnake, with support with his girlfriend Giovanna!",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]

@@ -1,0 +1,2 @@
+msg.follow=&1ÕýÔÚ¸úËæ: 
+msg.unfollow=&1Í£Ö¹¸úËæ: 
