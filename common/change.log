@@ -1,0 +1,2 @@
+v0.1.9
+-fixed the bug that it clear the movement state if player hit the backward key.

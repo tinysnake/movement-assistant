@@ -55,7 +55,7 @@
 		<antcall target="recompile" />
 		<antcall target="reobfuscate" />
 
-		<jar destfile="${build.release.dir}/[${mc.version}]movement-assistant-${build.version}${build_num}.jar">
+		<jar destfile="${build.release.dir}/[${mc.version}]movement-assistant-${build.version}.${build_num}.jar">
 			<fileset dir="${forge.dir}\mcp\src\minecraft\" includes="mcmod.info" />
 			<fileset dir="${forge.dir}\mcp\reobf\minecraft" />
 			<fileset dir="${build.basedir}\resource" />
