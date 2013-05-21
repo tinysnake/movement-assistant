@@ -48,15 +48,15 @@ public class MAMovementHandler
     public void updateMovmentOnPlayerTick()
     {
         Minecraft mc = Minecraft.getMinecraft();
-        if(mc.gameSettings.keyBindBack.isPressed())
-        {
-            stopMoving();
-            return;
-        }
         EntityClientPlayerMP p = mc.thePlayer;
         
         if (isAutoMoving || isAutoSprinting)
         {
+		    if(mc.gameSettings.keyBindBack.isPressed())
+            {
+                stopMoving();
+                return;
+		    }
             mc.gameSettings.keyBindForward.pressed = true;
             if (isAutoSprinting)
                 p.setSprinting(true);
