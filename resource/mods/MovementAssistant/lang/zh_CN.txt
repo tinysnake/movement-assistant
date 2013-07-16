@@ -1,2 +1,2 @@
-msg.follow=&1���ڸ���: 
-msg.unfollow=&1ֹͣ����: 
+msg.follow=正在跟随: 
+msg.unfollow=停止跟随: 
