@@ -23,7 +23,7 @@ public class MAKeyHandler extends KeyHandler
     private final static KeyBinding AUTO_FOLLOW_KEY = new KeyBinding(
             "Auto Follow Key", Keyboard.KEY_F);
     private final static KeyBinding[] KBS =
-    { AUTO_WALK_KEY, AUTO_SPRINT_KEY, AUTO_FOLLOW_KEY };
+    { AUTO_WALK_KEY, AUTO_SPRINT_KEY, AUTO_FOLLOW_KEY};
     private final static boolean[] RPT = new boolean[]
     { false, false, false };
 
@@ -74,6 +74,7 @@ public class MAKeyHandler extends KeyHandler
                             .setFollowingEntity(null);
                 }
                 MovementAssistant.movHandler.stopMoving();
+                MovementAssistant.movHandler.stopSneaking();
             }
         }
     }

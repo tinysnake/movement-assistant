@@ -1,6 +1,7 @@
 package snake.mcmods.movementassistant.handlers;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
@@ -11,7 +12,7 @@ import snake.mcmods.movementassistant.config.Lang;
 
 public class MAAutoFollowHandler
 {
-    public final static int MIN_DIS_SQ = 6;
+    public final static int MIN_DIS_SQ = 9;
     public final static int MAX_DIS_SQ = 45;
     public final static float MV_SPD = 0.22F;
     public final static double JUMP_SPD = 0.41999998688697815D;
@@ -39,9 +40,9 @@ public class MAAutoFollowHandler
         }
     }
 
-    private boolean getFollowAny(EntityLiving entity)
+    private boolean getFollowAny(Entity entity)
     {
-        return MovementAssistant.ma.config.getFollowAny() || entity instanceof EntityPlayer;
+        return MovementAssistant.ma.config.getFollowAny() || (entity instanceof EntityPlayer);
     }
 
     public void updateAutoFollow()
