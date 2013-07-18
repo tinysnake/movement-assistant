@@ -1,2 +1,5 @@
+v0.1.10
+-fixed the mojibake of chinese words in localized file.
+-added constantly sneak feature.
 v0.1.9
 -fixed the bug that it clear the movement state if player hit the backward key.
